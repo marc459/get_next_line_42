@@ -36,7 +36,7 @@ int	get_next_line(char **line)
 	char	buf[2];
 
 	*line = ft_strdup("");
-	if (line == NULL || !line)
+	if (line == NULL || !*line)
 		return (-1);
 	ret = read(0, buf, 1);
 	while (ret > 0)
@@ -44,6 +44,8 @@ int	get_next_line(char **line)
 		if (buf[0] == '\n')
 			break ;
 		*line = ft_strjoint(*line, buf[0]);
+		ret = read(0, buf, 1);
 	}
 	return (ret);
 }
+
